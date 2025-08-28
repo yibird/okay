@@ -11,8 +11,17 @@
     "typescript utils",
     "javascript utils"
   ],
-  "license": "ISC",
-  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/yibird/okay#readme",
+  "bugs": {
+    "url": "https://github.com/yibird/okay/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yibird/okay.git"
+  },
+  "author": "zchengfeng <2684837849@qq.com>",
+  "funding": "https://github.com/sponsors/yibird",
   "main": "index.ts",
   "scripts": {
     "build": "tsdown --minify",

@@ -5,16 +5,16 @@
   "description": "A starter for creating a tsdown package.",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/gugustinette/create-tsdown#readme",
+  "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
-    "url": "https://github.com/gugustinette/create-tsdown/issues"
+    "url": "https://github.com/yibird/okay/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gugustinette/create-tsdown.git"
+    "url": "git+https://github.com/yibird/okay.git"
   },
   "author": "zchengfeng <2684837849@qq.com>",
-  "funding": "https://github.com/sponsors/sxzz",
+  "funding": "https://github.com/sponsors/yibird",
   "files": [
     "dist"
   ],
