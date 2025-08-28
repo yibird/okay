@@ -24,7 +24,7 @@
   "funding": "https://github.com/sponsors/yibird",
   "main": "index.ts",
   "scripts": {
-    "build": "tsdown --minify",
+    "build": "tsdown --format esm --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
