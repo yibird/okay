@@ -59,10 +59,10 @@
     "eslint": "^9.26.0",
     "happy-dom": "^17.4.7",
     "prettier": "^3.5.3",
-    "tsdown": "^0.11.9",
+    "tsdown": "^0.14.2",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.3"
+    "vitest": "^3.2.4"
   },
   "prettier": "@sxzz/prettier-config"
 }
