@@ -1,9 +1,12 @@
 # okay
 Okay is a Typescript tool library that provides some commonly used functions. Okay includes the following modules:
--@okay/core: Provides some commonly used functions, including is, date, data structure conversion (list to tree, etc.), asynchronous, and other commonly used functions.
--@okay/vue: Provides some vue related functions and composite APIs.
--@okay/react: Provides some React related functions and hooks.
-##Installation
+- @okay/core: Provides some commonly used functions, including is, date, data structure conversion (list to tree, etc.), asynchronous, and other commonly used functions.
+- @okay/vue: Provides some vue related functions and composite APIs.
+- @okay/react: Provides some React related functions and hooks.
+
+<p align="center">English | <a href="README.zh-CN.md">中文</a></p>
+
+## Installation
 -Install the core module:
 ```bash
 npm install @okay/core
