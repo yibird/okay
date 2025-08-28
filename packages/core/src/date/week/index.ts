@@ -1,4 +1,4 @@
-export { getCurrentWeek } from './get-current-week-range'
+export { getCurrentWeekRange } from './get-current-week-range'
 export { getDayIndexInWeek } from './get-day-index-in-week'
 export { getDayOfWeek } from './get-day-of-week'
 export { getFirstDayOfWeek } from './get-first-day-of-week'
