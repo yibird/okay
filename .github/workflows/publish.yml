@@ -1,0 +1,64 @@
+name: Publish
+
+permissions:
+  contents: write
+  packages: write
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Set node LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm run build
+
+      - name: Create version bump and changelog
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          commit: "chore: version packages"
+          title: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        run: pnpm publish -r
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: ${{ steps.changesets.outputs.hasChangesets }}
+        with:
+          generate_release_notes: true
+          tag_name: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

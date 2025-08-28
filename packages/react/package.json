@@ -1,0 +1,29 @@
+{
+  "name": "okay-react",
+  "version": "0.0.1",
+  "description": "a utility React tool library and hooks library",
+  "keywords": [
+    "react",
+    "hooks",
+    "tool",
+    "library",
+    "utility",
+    "react-hooks",
+    "okay react"
+  ],
+  "license": "ISC",
+  "author": "zchengfeng 2684837849@qq.com",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "okay-vue",
+  "version": "0.0.1",
+  "description": "a utility Vue tool library and composables library",
+  "keywords": [
+    "vue",
+    "composables",
+    "tool",
+    "library",
+    "utility",
+    "vue3",
+    "vue-composables",
+    "okay/vue"
+  ],
+  "license": "ISC",
+  "author": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsdown --format esm"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "vue": "^3.5.18"
+  }
+}
