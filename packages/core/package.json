@@ -25,13 +25,6 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.mjs"
-    }
-  },
   "scripts": {
     "build": "tsdown --format esm --minify",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -23,7 +23,16 @@
   },
   "author": "zchengfeng <2684837849@qq.com>",
   "funding": "https://github.com/sponsors/yibird",
-  "main": "index.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsdown --format esm --minify"
