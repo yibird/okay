@@ -1,0 +1,10 @@
+{
+  "$schema": "../../.oxlintrc.json",
+  "plugins": ["vue"],
+  "env": {
+    "browser": true
+  },
+  "settings": {},
+  "rules": {},
+  "overrides": []
+}

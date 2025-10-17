@@ -1,0 +1,18 @@
+{
+  "printWidth": 100,
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "proseWrap": "never",
+  "htmlWhitespaceSensitivity": "strict",
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-packagejson", "@prettier/plugin-oxc"],
+  "overrides": [
+    {
+      "files": ".*rc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}

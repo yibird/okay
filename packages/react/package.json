@@ -11,7 +11,6 @@
     "react-hooks",
     "okay react"
   ],
-  "license": "MIT",
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
@@ -20,11 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
-  "author": "zchengfeng <2684837849@qq.com>",
   "funding": "https://github.com/sponsors/yibird",
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
@@ -32,17 +29,23 @@
       "require": "./dist/index.mjs"
     }
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "scripts": {
     "build": "tsdown --format esm --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "react": "^19.1.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.10"
+    "@types/react": "^19.1.10",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-perf": "^3.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

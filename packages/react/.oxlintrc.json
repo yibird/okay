@@ -1,0 +1,10 @@
+{
+  "$schema": "../../.oxlintrc.json",
+  "plugins": ["react", "react-hooks", "react-perf"],
+  "env": {
+    "browser": true
+  },
+  "settings": {},
+  "rules": {},
+  "overrides": []
+}

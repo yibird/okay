@@ -1,10 +1,7 @@
 {
   "name": "okay",
   "version": "0.0.1",
-  "packageManager": "pnpm@10.11.0",
   "description": "A starter for creating a tsdown package.",
-  "type": "module",
-  "license": "MIT",
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
@@ -13,31 +10,30 @@
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
-  "author": "zchengfeng <2684837849@qq.com>",
   "funding": "https://github.com/sponsors/yibird",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
+  "type": "module",
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint --cache .",
-    "lint:fix": "pnpm run lint --fix",
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "test": "vitest",
-    "typecheck": "tsc --noEmit",
     "format": "prettier --cache --write .",
+    "lint": "oxlint",
+    "lint:fix": "pnpm run lint --fix",
+    "prepublishOnly": "pnpm run build",
     "release": "pnpm --recursive --stream build && changeset publish",
-    "prepublishOnly": "pnpm run build"
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "config": {
     "commitizen": {
@@ -49,20 +45,25 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@commitlint/types": "^19.8.1",
-    "@sxzz/eslint-config": "^7.0.1",
-    "@sxzz/prettier-config": "^2.2.1",
     "@types/node": "^22.15.17",
     "commitizen": "^4.3.1",
     "conventional-changelog-atom": "^5.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "cz-git": "^1.11.1",
     "eslint": "^9.26.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-promise": "^7.2.1",
     "happy-dom": "^17.4.7",
-    "prettier": "^3.5.3",
+    "oxlint": "^1.23.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-packagejson": "^2.5.19",
     "tsdown": "^0.15.6",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },
-  "prettier": "@sxzz/prettier-config"
+  "packageManager": "pnpm@10.11.0",
+  "publishConfig": {
+    "access": "public"
+  }
 }
