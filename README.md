@@ -6,7 +6,7 @@ Okay is a Typescript tool library that provides some commonly used functions. Ok
 - @okay/vue: Provides some vue related functions and composite APIs.
 - @okay/react: Provides some React related functions and hooks.
 
-<p align="center">English | <a href="./README.zh-CN.md">中文</a></p>
+<p align="center">English | <a href="README.zh-CN.md">中文</a></p>
 
 ## Installation
 
