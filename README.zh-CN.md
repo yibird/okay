@@ -4,35 +4,35 @@
 
 `okay` 是一个基于 pnpm workspace 的 TypeScript 工具库 monorepo，当前包含三个包：
 
-- `@okay/core`：与框架无关的类型判断、异步控制、数字、文件、日期、数组和树工具。
-- `@okay/vue`：Vue 3 composables 和 ref 工具。
-- `@okay/react`：React ref 工具。
+- `@zhouchengfeng/okay-core`：与框架无关的类型判断、异步控制、数字、文件、日期、数组和树工具。
+- `@zhouchengfeng/okay-vue`：Vue 3 composables 和 ref 工具。
+- `@zhouchengfeng/okay-react`：React ref 工具。
 
 ## 安装
 
 ```bash
-pnpm add @okay/core
-pnpm add @okay/vue
-pnpm add @okay/react
+pnpm add @zhouchengfeng/okay-core
+pnpm add @zhouchengfeng/okay-vue
+pnpm add @zhouchengfeng/okay-react
 ```
 
 按需导入：
 
 ```ts
-import { asyncTo, deferred } from '@okay/core/async'
-import { leaves } from '@okay/core/coll'
-import { formatBytes } from '@okay/core/file'
-import { isEmpty } from '@okay/core/is'
-import { formatCurrency } from '@okay/core/number'
-import { useDebouncedRef } from '@okay/vue'
-import { composeRefs } from '@okay/react'
+import { asyncTo, deferred } from '@zhouchengfeng/okay-core/async'
+import { leaves } from '@zhouchengfeng/okay-core/coll'
+import { formatBytes } from '@zhouchengfeng/okay-core/file'
+import { isEmpty } from '@zhouchengfeng/okay-core/is'
+import { formatCurrency } from '@zhouchengfeng/okay-core/number'
+import { useDebouncedRef } from '@zhouchengfeng/okay-vue'
+import { composeRefs } from '@zhouchengfeng/okay-react'
 ```
 
-根入口 `@okay/core` 仍然可用，但推荐在对体积敏感的场景使用子路径导入。
+根入口 `@zhouchengfeng/okay-core` 仍然可用，但推荐在对体积敏感的场景使用子路径导入。
 
 ## 模块
 
-### @okay/core
+### @zhouchengfeng/okay-core
 
 类型判断：
 
@@ -104,7 +104,7 @@ import { composeRefs } from '@okay/react'
 | `businessDays(start, end, options?)`                             | 计算日期区间内的工作日天数，避免逐日遍历。                  |
 | `isoWeek`, `weekOfYear`, `weeksOfMonth`, `quarter`, `isLeapYear` | 周、月、季度和年份相关工具。                                |
 
-### @okay/vue
+### @zhouchengfeng/okay-vue
 
 | API                                       | 说明                                                          |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -115,7 +115,7 @@ import { composeRefs } from '@okay/react'
 | `useValidatedRef(initial, validator)`     | 返回 `{ value, error }`，用于简单校验状态。                   |
 | `useStorageRef` / `useCachedRef`          | 将 ref 持久化到 `StorageLike`，并提供 `sync()` / `remove()`。 |
 
-### @okay/react
+### @zhouchengfeng/okay-react
 
 | API                        | 说明                                               |
 | -------------------------- | -------------------------------------------------- |

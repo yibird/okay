@@ -30,7 +30,7 @@ import {
   type ForEachTreeOptions,
   type TreeDiffResult,
   type TreeVisitOrder,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## 数组 API

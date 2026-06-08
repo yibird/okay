@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [["@okay/core", "@okay/vue", "@okay/react"]],
+  "fixed": [["@zhouchengfeng/okay-core", "@zhouchengfeng/okay-vue", "@zhouchengfeng/okay-react"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

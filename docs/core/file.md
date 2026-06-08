@@ -21,7 +21,7 @@ import {
   type FileParts,
   type FormatBytesOptions,
   type ReadTextOptions,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## 类型

@@ -37,7 +37,7 @@ const packageConfig = (
 })
 
 export default defineConfig([
-  packageConfig('@okay/core', 'packages/core', {
+  packageConfig('@zhouchengfeng/okay-core', 'packages/core', {
     entry: {
       index: resolve(rootDir, 'packages/core/src/index.ts'),
       async: resolve(rootDir, 'packages/core/src/async/index.ts'),
@@ -49,10 +49,10 @@ export default defineConfig([
       string: resolve(rootDir, 'packages/core/src/string/index.ts'),
     },
   }),
-  packageConfig('@okay/vue', 'packages/vue', {
+  packageConfig('@zhouchengfeng/okay-vue', 'packages/vue', {
     deps: { skipNodeModulesBundle: true, neverBundle: ['vue'] },
   }),
-  packageConfig('@okay/react', 'packages/react', {
+  packageConfig('@zhouchengfeng/okay-react', 'packages/react', {
     deps: { skipNodeModulesBundle: true, neverBundle: ['react', 'react-dom'] },
   }),
 ])

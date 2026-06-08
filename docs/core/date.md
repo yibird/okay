@@ -66,7 +66,7 @@ import {
   type BusinessDayOptions,
   type BusinessDaysOptions,
   type RelativeTimeOptions,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## 格式化与范围

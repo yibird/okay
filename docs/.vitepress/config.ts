@@ -74,7 +74,7 @@ export default defineConfig({
       },
       {
         collapsed: false,
-        text: '@okay/core',
+        text: '@zhouchengfeng/okay-core',
         items: [
           { text: '字符串', link: '/core/string' },
           { text: '数字', link: '/core/number' },

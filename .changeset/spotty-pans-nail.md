@@ -1,7 +1,7 @@
 ---
-"@okay/core": major
-"@okay/react": major
-"@okay/vue": major
+"@zhouchengfeng/okay-core": major
+"@zhouchengfeng/okay-react": major
+"@zhouchengfeng/okay-vue": major
 ---
 
 init...

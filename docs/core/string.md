@@ -1,6 +1,6 @@
 ﻿# 字符串
 
-`@okay/core` 的字符串工具目前聚焦敏感信息脱敏。所有脱敏方法都接受 `string | number | bigint | null | undefined`，空值默认返回空字符串，适合直接用于表格、详情页和日志输出前处理。
+`@zhouchengfeng/okay-core` 的字符串工具目前聚焦敏感信息脱敏。所有脱敏方法都接受 `string | number | bigint | null | undefined`，空值默认返回空字符串，适合直接用于表格、详情页和日志输出前处理。
 
 ```ts
 import {
@@ -15,7 +15,7 @@ import {
   type MaskNameOptions,
   type MaskOptions,
   type MaskValue,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## 类型

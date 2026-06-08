@@ -1,13 +1,19 @@
 ﻿# React
 
-`@okay/react` 当前聚焦 React ref 辅助方法，用于减少封装组件、透传 DOM ref 和兼容 callback ref 时的样板代码。
+`@zhouchengfeng/okay-react` 当前聚焦 React ref 辅助方法，用于减少封装组件、透传 DOM ref 和兼容 callback ref 时的样板代码。
 
 ```bash
-pnpm add @okay/react react
+pnpm add @zhouchengfeng/okay-react react
 ```
 
 ```tsx
-import { composeRefs, getRefValue, isRef, setRef, withForwardedRef } from '@okay/react'
+import {
+  composeRefs,
+  getRefValue,
+  isRef,
+  setRef,
+  withForwardedRef,
+} from '@zhouchengfeng/okay-react'
 ```
 
 ## API 总览
@@ -25,7 +31,7 @@ import { composeRefs, getRefValue, isRef, setRef, withForwardedRef } from '@okay
 同时支持对象 ref 和 callback ref；传入 `null` 或 `undefined` ref 时会安全忽略。
 
 ```tsx
-import { setRef } from '@okay/react'
+import { setRef } from '@zhouchengfeng/okay-react'
 
 function assignInput(element: HTMLInputElement | null) {
   setRef(objectRef, element)
@@ -38,7 +44,7 @@ function assignInput(element: HTMLInputElement | null) {
 把多个 ref 合成为一个 callback ref。常用于组件内部既要维护本地 ref，又要把同一个 DOM 节点暴露给外部。
 
 ```tsx
-import { composeRefs } from '@okay/react'
+import { composeRefs } from '@zhouchengfeng/okay-react'
 import { forwardRef, useRef } from 'react'
 
 type InputProps = React.ComponentProps<'input'>

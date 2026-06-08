@@ -4,35 +4,35 @@ English | [简体中文](./README.zh-CN.md)
 
 `okay` is a pnpm monorepo for small, typed utilities. It publishes three packages:
 
-- `@okay/core`: framework-agnostic utilities for type checks, async control, numbers, files, dates, arrays, and trees.
-- `@okay/vue`: Vue 3 composables and ref helpers.
-- `@okay/react`: React ref helpers.
+- `@zhouchengfeng/okay-core`: framework-agnostic utilities for type checks, async control, numbers, files, dates, arrays, and trees.
+- `@zhouchengfeng/okay-vue`: Vue 3 composables and ref helpers.
+- `@zhouchengfeng/okay-react`: React ref helpers.
 
 ## Installation
 
 ```bash
-pnpm add @okay/core
-pnpm add @okay/vue
-pnpm add @okay/react
+pnpm add @zhouchengfeng/okay-core
+pnpm add @zhouchengfeng/okay-vue
+pnpm add @zhouchengfeng/okay-react
 ```
 
 Use the package you need:
 
 ```ts
-import { asyncTo, deferred } from '@okay/core/async'
-import { leaves } from '@okay/core/coll'
-import { formatBytes } from '@okay/core/file'
-import { isEmpty } from '@okay/core/is'
-import { formatCurrency } from '@okay/core/number'
-import { useDebouncedRef } from '@okay/vue'
-import { composeRefs } from '@okay/react'
+import { asyncTo, deferred } from '@zhouchengfeng/okay-core/async'
+import { leaves } from '@zhouchengfeng/okay-core/coll'
+import { formatBytes } from '@zhouchengfeng/okay-core/file'
+import { isEmpty } from '@zhouchengfeng/okay-core/is'
+import { formatCurrency } from '@zhouchengfeng/okay-core/number'
+import { useDebouncedRef } from '@zhouchengfeng/okay-vue'
+import { composeRefs } from '@zhouchengfeng/okay-react'
 ```
 
-The root entry `@okay/core` is still available, but subpath imports keep non-bundled runtimes smaller.
+The root entry `@zhouchengfeng/okay-core` is still available, but subpath imports keep non-bundled runtimes smaller.
 
 ## Packages
 
-### @okay/core
+### @zhouchengfeng/okay-core
 
 Type guards:
 
@@ -104,7 +104,7 @@ Date utilities:
 | `businessDays(start, end, options?)`                             | Counts business days across a range without per-day iteration.         |
 | `isoWeek`, `weekOfYear`, `weeksOfMonth`, `quarter`, `isLeapYear` | Week, month, quarter, and year helpers.                                |
 
-### @okay/vue
+### @zhouchengfeng/okay-vue
 
 | API                                       | Description                                                                    |
 | ----------------------------------------- | ------------------------------------------------------------------------------ |
@@ -115,7 +115,7 @@ Date utilities:
 | `useValidatedRef(initial, validator)`     | Returns `{ value, error }` for validated state.                                |
 | `useStorageRef` / `useCachedRef`          | Persists a ref into a `StorageLike` object and supports `sync()` / `remove()`. |
 
-### @okay/react
+### @zhouchengfeng/okay-react
 
 | API                        | Description                                              |
 | -------------------------- | -------------------------------------------------------- |

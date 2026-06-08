@@ -15,7 +15,7 @@ hero:
 
 features:
   - title: 明确的 API 边界
-    details: 通用能力放在 @okay/core，Vue 和 React 包只保留框架适配层，避免重复逻辑和隐藏依赖。
+    details: 通用能力放在 @zhouchengfeng/okay-core，Vue 和 React 包只保留框架适配层，避免重复逻辑和隐藏依赖。
   - title: TypeScript 优先
     details: 文档提供方法签名、关键类型、返回值和可复制示例，帮助你在 IDE 中获得稳定推断。
   - title: 性能可验证

@@ -1,5 +1,5 @@
 {
-  "name": "@okay/react",
+  "name": "@zhouchengfeng/okay-react",
   "version": "0.0.12",
   "description": "a utility React tool library and hooks library",
   "keywords": [
@@ -41,8 +41,8 @@
     "provenance": true
   },
   "scripts": {
-    "build": "tsdown --filter @okay/react",
-    "dev": "tsdown --filter @okay/react --watch",
+    "build": "tsdown --filter @zhouchengfeng/okay-react",
+    "dev": "tsdown --filter @zhouchengfeng/okay-react --watch",
     "test": "vitest --run src"
   },
   "devDependencies": {

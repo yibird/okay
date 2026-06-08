@@ -34,7 +34,7 @@ import {
   isWeakSet,
   isWindow,
   rawType,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## API 总览

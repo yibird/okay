@@ -1,5 +1,5 @@
 {
-  "name": "@okay/vue",
+  "name": "@zhouchengfeng/okay-vue",
   "version": "0.0.12",
   "description": "a utility Vue tool library and composables library",
   "keywords": [
@@ -42,8 +42,8 @@
     "provenance": true
   },
   "scripts": {
-    "build": "tsdown --filter @okay/vue",
-    "dev": "tsdown --filter @okay/vue --watch",
+    "build": "tsdown --filter @zhouchengfeng/okay-vue",
+    "dev": "tsdown --filter @zhouchengfeng/okay-vue --watch",
     "test": "vitest --run src"
   },
   "devDependencies": {

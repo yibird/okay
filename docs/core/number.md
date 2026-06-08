@@ -17,7 +17,7 @@ import {
   type NumberFormatValue,
   type NumberFormatter,
   type PercentFormatValue,
-} from '@okay/core'
+} from '@zhouchengfeng/okay-core'
 ```
 
 ## 类型

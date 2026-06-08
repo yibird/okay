@@ -1,9 +1,9 @@
 ﻿# Vue
 
-`@okay/vue` 提供 Vue 3 composables 和 ref 工具。通用业务逻辑仍建议优先从 `@okay/core` 导入；只有需要 Vue 响应式生命周期或 `Ref` 时再使用本包。
+`@zhouchengfeng/okay-vue` 提供 Vue 3 composables 和 ref 工具。通用业务逻辑仍建议优先从 `@zhouchengfeng/okay-core` 导入；只有需要 Vue 响应式生命周期或 `Ref` 时再使用本包。
 
 ```bash
-pnpm add @okay/vue vue
+pnpm add @zhouchengfeng/okay-vue vue
 ```
 
 ```ts
@@ -21,7 +21,7 @@ import {
   type UseStorageRefOptions,
   type UseThrottledRefOptions,
   type ValidatedRef,
-} from '@okay/vue'
+} from '@zhouchengfeng/okay-vue'
 ```
 
 ## API 总览
@@ -43,7 +43,7 @@ import {
 ```vue
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useDebouncedValue } from '@okay/vue'
+import { useDebouncedValue } from '@zhouchengfeng/okay-vue'
 
 const keyword = ref('')
 const debouncedKeyword = useDebouncedValue(keyword, 300)
@@ -61,7 +61,7 @@ watch(debouncedKeyword, (value) => {
 ```vue
 <script setup lang="ts">
 import { watch } from 'vue'
-import { useDebouncedRef } from '@okay/vue'
+import { useDebouncedRef } from '@zhouchengfeng/okay-vue'
 
 const keyword = useDebouncedRef('', { delay: 300 })
 

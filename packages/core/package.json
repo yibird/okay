@@ -1,5 +1,5 @@
 {
-  "name": "@okay/core",
+  "name": "@zhouchengfeng/okay-core",
   "version": "0.0.12",
   "description": "a utility function library",
   "keywords": [
@@ -76,8 +76,8 @@
     "provenance": true
   },
   "scripts": {
-    "build": "tsdown --filter @okay/core",
-    "dev": "tsdown --filter @okay/core --watch",
+    "build": "tsdown --filter @zhouchengfeng/okay-core",
+    "dev": "tsdown --filter @zhouchengfeng/okay-core --watch",
     "test": "vitest --run src"
   },
   "dependencies": {

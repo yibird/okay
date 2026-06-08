@@ -36,7 +36,7 @@
     "format:check": "oxfmt --check . --ignore-path .oxfmtignore",
     "lint": "oxlint",
     "lint:fix": "pnpm run lint --fix",
-    "pack:check": "pnpm --filter @okay/core --filter @okay/vue --filter @okay/react --stream exec npm pack --dry-run",
+    "pack:check": "pnpm --filter @zhouchengfeng/okay-core --filter @zhouchengfeng/okay-vue --filter @zhouchengfeng/okay-react --stream exec npm pack --dry-run",
     "prepublishOnly": "pnpm run build",
     "release:changeset": "changeset",
     "release:version": "changeset version",

@@ -1,49 +1,49 @@
 ﻿# 快速开始
 
-Okay 是一个 TypeScript 工具库 monorepo，按使用场景拆分为三个包：`@okay/core`、`@okay/vue` 和 `@okay/react`。如果你只需要通用工具，安装 `@okay/core` 即可；只有在 Vue 或 React 项目中需要框架集成时，再安装对应框架包。
+Okay 是一个 TypeScript 工具库 monorepo，按使用场景拆分为三个包：`@zhouchengfeng/okay-core`、`@zhouchengfeng/okay-vue` 和 `@zhouchengfeng/okay-react`。如果你只需要通用工具，安装 `@zhouchengfeng/okay-core` 即可；只有在 Vue 或 React 项目中需要框架集成时，再安装对应框架包。
 
 ## 安装
 
 ```bash
-pnpm add @okay/core
+pnpm add @zhouchengfeng/okay-core
 ```
 
 Vue 项目：
 
 ```bash
-pnpm add @okay/core @okay/vue
+pnpm add @zhouchengfeng/okay-core @zhouchengfeng/okay-vue
 ```
 
 React 项目：
 
 ```bash
-pnpm add @okay/core @okay/react
+pnpm add @zhouchengfeng/okay-core @zhouchengfeng/okay-react
 ```
 
 也可以使用 npm 或 yarn：
 
 ```bash
-npm install @okay/core
-yarn add @okay/core
+npm install @zhouchengfeng/okay-core
+yarn add @zhouchengfeng/okay-core
 ```
 
 ## 选择包
 
-| 包            | 适合场景                                    | 示例能力                                                     |
-| ------------- | ------------------------------------------- | ------------------------------------------------------------ |
-| `@okay/core`  | 框架无关业务代码、Node.js、浏览器工具函数。 | 类型判断、日期、数字、字符串脱敏、文件、数组、树、异步控制。 |
-| `@okay/vue`   | Vue 3 Composition API 项目。                | 防抖 ref、节流 ref、同步 ref、校验 ref、缓存 ref。           |
-| `@okay/react` | React ref 组合和转发。                      | `composeRefs`、`setRef`、`withForwardedRef`。                |
+| 包                          | 适合场景                                    | 示例能力                                                     |
+| --------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| `@zhouchengfeng/okay-core`  | 框架无关业务代码、Node.js、浏览器工具函数。 | 类型判断、日期、数字、字符串脱敏、文件、数组、树、异步控制。 |
+| `@zhouchengfeng/okay-vue`   | Vue 3 Composition API 项目。                | 防抖 ref、节流 ref、同步 ref、校验 ref、缓存 ref。           |
+| `@zhouchengfeng/okay-react` | React ref 组合和转发。                      | `composeRefs`、`setRef`、`withForwardedRef`。                |
 
 ## 基础导入
 
 所有公开方法都支持按需导入，利于 tree shaking。对体积敏感的场景，优先使用公开子路径入口。
 
 ```ts
-import { asyncTo } from '@okay/core/async'
-import { isEmpty } from '@okay/core/is'
-import { formatCurrency } from '@okay/core/number'
-import { maskPhone } from '@okay/core/string'
+import { asyncTo } from '@zhouchengfeng/okay-core/async'
+import { isEmpty } from '@zhouchengfeng/okay-core/is'
+import { formatCurrency } from '@zhouchengfeng/okay-core/number'
+import { maskPhone } from '@zhouchengfeng/okay-core/string'
 
 const price = formatCurrency(1288, 'CNY', { locale: 'zh-CN' })
 // '¥1,288.00'
@@ -65,7 +65,7 @@ if (error) {
 工具函数会尽量从输入推导类型，不要求你手动传泛型。
 
 ```ts
-import { diffArray, keyBy } from '@okay/core/coll'
+import { diffArray, keyBy } from '@zhouchengfeng/okay-core/coll'
 
 const users = [
   { id: 1, name: 'Alice', role: 'admin' },
@@ -82,10 +82,10 @@ diff.updated[0]?.valueChanged
 
 ## Vue 使用
 
-`@okay/vue` 面向 Vue 3，返回值遵循 Composition API 的 `Ref` 习惯。
+`@zhouchengfeng/okay-vue` 面向 Vue 3，返回值遵循 Composition API 的 `Ref` 习惯。
 
 ```ts
-import { useDebouncedRef, useValidatedRef } from '@okay/vue'
+import { useDebouncedRef, useValidatedRef } from '@zhouchengfeng/okay-vue'
 
 const keyword = useDebouncedRef('', { delay: 300 })
 
@@ -98,10 +98,10 @@ age.error.value
 
 ## React 使用
 
-`@okay/react` 聚焦 ref 工具，不包含 UI 组件。
+`@zhouchengfeng/okay-react` 聚焦 ref 工具，不包含 UI 组件。
 
 ```tsx
-import { composeRefs } from '@okay/react'
+import { composeRefs } from '@zhouchengfeng/okay-react'
 import { forwardRef, useRef } from 'react'
 
 const Input = forwardRef<HTMLInputElement>((props, forwardedRef) => {
@@ -131,7 +131,7 @@ const Input = forwardRef<HTMLInputElement>((props, forwardedRef) => {
 Okay 的包面向现代构建工具发布，默认使用 ESM 和 TypeScript 类型声明。
 
 ```ts
-import { formatNumber } from '@okay/core/number'
+import { formatNumber } from '@zhouchengfeng/okay-core/number'
 ```
 
-避免从内部路径导入未公开文件。公开 API 以根入口和 `@okay/core/async`、`@okay/core/number` 这类子路径入口为准。
+避免从内部路径导入未公开文件。公开 API 以根入口和 `@zhouchengfeng/okay-core/async`、`@zhouchengfeng/okay-core/number` 这类子路径入口为准。
