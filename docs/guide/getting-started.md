@@ -37,10 +37,13 @@ yarn add @okay/core
 
 ## 基础导入
 
-所有公开方法都支持按需导入，利于 tree shaking。
+所有公开方法都支持按需导入，利于 tree shaking。对体积敏感的场景，优先使用公开子路径入口。
 
 ```ts
-import { asyncTo, formatCurrency, isEmpty, maskPhone } from '@okay/core'
+import { asyncTo } from '@okay/core/async'
+import { isEmpty } from '@okay/core/is'
+import { formatCurrency } from '@okay/core/number'
+import { maskPhone } from '@okay/core/string'
 
 const price = formatCurrency(1288, 'CNY', { locale: 'zh-CN' })
 // '¥1,288.00'
@@ -62,7 +65,7 @@ if (error) {
 工具函数会尽量从输入推导类型，不要求你手动传泛型。
 
 ```ts
-import { diffArray, keyBy } from '@okay/core'
+import { diffArray, keyBy } from '@okay/core/coll'
 
 const users = [
   { id: 1, name: 'Alice', role: 'admin' },
@@ -128,7 +131,7 @@ const Input = forwardRef<HTMLInputElement>((props, forwardedRef) => {
 Okay 的包面向现代构建工具发布，默认使用 ESM 和 TypeScript 类型声明。
 
 ```ts
-import { formatNumber } from '@okay/core'
+import { formatNumber } from '@okay/core/number'
 ```
 
-避免从内部路径导入未公开文件。公开 API 以包入口导出为准，文档中的示例也只使用包入口。
+避免从内部路径导入未公开文件。公开 API 以根入口和 `@okay/core/async`、`@okay/core/number` 这类子路径入口为准。

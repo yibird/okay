@@ -34,10 +34,40 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     },
+    "./async": {
+      "types": "./dist/async.d.mts",
+      "import": "./dist/async.mjs",
+      "default": "./dist/async.mjs"
+    },
+    "./coll": {
+      "types": "./dist/coll.d.mts",
+      "import": "./dist/coll.mjs",
+      "default": "./dist/coll.mjs"
+    },
     "./date": {
       "types": "./dist/date.d.mts",
       "import": "./dist/date.mjs",
       "default": "./dist/date.mjs"
+    },
+    "./file": {
+      "types": "./dist/file.d.mts",
+      "import": "./dist/file.mjs",
+      "default": "./dist/file.mjs"
+    },
+    "./is": {
+      "types": "./dist/is.d.mts",
+      "import": "./dist/is.mjs",
+      "default": "./dist/is.mjs"
+    },
+    "./number": {
+      "types": "./dist/number.d.mts",
+      "import": "./dist/number.mjs",
+      "default": "./dist/number.mjs"
+    },
+    "./string": {
+      "types": "./dist/string.d.mts",
+      "import": "./dist/string.mjs",
+      "default": "./dist/string.mjs"
     },
     "./package.json": "./package.json"
   },

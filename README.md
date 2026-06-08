@@ -19,10 +19,16 @@ pnpm add @okay/react
 Use the package you need:
 
 ```ts
-import { asyncTo, deferred, formatCurrency, formatBytes, leaves, isEmpty } from '@okay/core'
+import { asyncTo, deferred } from '@okay/core/async'
+import { leaves } from '@okay/core/coll'
+import { formatBytes } from '@okay/core/file'
+import { isEmpty } from '@okay/core/is'
+import { formatCurrency } from '@okay/core/number'
 import { useDebouncedRef } from '@okay/vue'
 import { composeRefs } from '@okay/react'
 ```
+
+The root entry `@okay/core` is still available, but subpath imports keep non-bundled runtimes smaller.
 
 ## Packages
 

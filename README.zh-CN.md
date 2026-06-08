@@ -19,10 +19,16 @@ pnpm add @okay/react
 按需导入：
 
 ```ts
-import { asyncTo, deferred, formatCurrency, formatBytes, leaves, isEmpty } from '@okay/core'
+import { asyncTo, deferred } from '@okay/core/async'
+import { leaves } from '@okay/core/coll'
+import { formatBytes } from '@okay/core/file'
+import { isEmpty } from '@okay/core/is'
+import { formatCurrency } from '@okay/core/number'
 import { useDebouncedRef } from '@okay/vue'
 import { composeRefs } from '@okay/react'
 ```
+
+根入口 `@okay/core` 仍然可用，但推荐在对体积敏感的场景使用子路径导入。
 
 ## 模块
 

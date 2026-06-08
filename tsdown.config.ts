@@ -13,7 +13,7 @@ const shared: UserConfig = {
   failOnWarn: true,
   fixedExtension: true,
   format: 'esm',
-  minify: 'dce-only',
+  minify: true,
   platform: 'neutral',
   report: true,
   sourcemap: false,
@@ -40,7 +40,13 @@ export default defineConfig([
   packageConfig('@okay/core', 'packages/core', {
     entry: {
       index: resolve(rootDir, 'packages/core/src/index.ts'),
+      async: resolve(rootDir, 'packages/core/src/async/index.ts'),
+      coll: resolve(rootDir, 'packages/core/src/coll/index.ts'),
       date: resolve(rootDir, 'packages/core/src/date/index.ts'),
+      file: resolve(rootDir, 'packages/core/src/file/index.ts'),
+      is: resolve(rootDir, 'packages/core/src/is/index.ts'),
+      number: resolve(rootDir, 'packages/core/src/number/index.ts'),
+      string: resolve(rootDir, 'packages/core/src/string/index.ts'),
     },
   }),
   packageConfig('@okay/vue', 'packages/vue', {
