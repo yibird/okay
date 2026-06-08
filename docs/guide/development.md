@@ -54,7 +54,7 @@ export function example<T>(items: readonly T[]): T[] {
 
 | 内容     | 要求                                                                                                      |
 | -------- | --------------------------------------------------------------------------------------------------------- |
-| 导入示例 | 只从包入口导入，例如 `@zhouchengfeng/okay-core`、`@zhouchengfeng/okay-vue`、`@zhouchengfeng/okay-react`。 |
+| 导入示例 | 只从公开入口导入，例如 `@zhouchengfeng/okay-core`、`@zhouchengfeng/okay-core/async`、`@zhouchengfeng/okay-vue`、`@zhouchengfeng/okay-react`。 |
 | 类型签名 | 写出用户需要理解的泛型、参数和返回值。                                                                    |
 | 参数说明 | 解释行为，而不是重复变量名。                                                                              |
 | 返回值   | 对对象、元组、数组和错误结果写清结构。                                                                    |

@@ -4,7 +4,7 @@ export { fastIndexedMap } from './fastIndexedMap'
 export { fastStableSort } from './fastStableSort'
 export { listToSet } from './listToSet'
 export { listToMap } from './listToMap'
-export { listToTree } from './listToTree'
+export { listToTree, type ListToTreeOptions } from './listToTree'
 export type {
   ArrayDiffAdded,
   ArrayDiffId,

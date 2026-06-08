@@ -25,7 +25,7 @@ import {
   type RaceObjectResult,
   type SettledObjectResult,
   type TimeSliceGeneratorFn,
-} from '@zhouchengfeng/okay-core'
+} from '@zhouchengfeng/okay-core/async'
 ```
 
 ## API 总览

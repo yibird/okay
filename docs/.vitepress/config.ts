@@ -1,12 +1,14 @@
 ﻿import { defineConfig } from 'vitepress'
 
 const repo = 'https://github.com/yibird/okay'
+const base = process.env.VITEPRESS_BASE ?? '/okay/'
 
 export default defineConfig({
-  base: process.env.VITEPRESS_BASE ?? '/okay/',
+  base,
   cleanUrls: true,
   description: '面向 TypeScript、Vue 和 React 的类型安全工具库。',
   head: [
+    ['link', { href: `${base}logo.svg`, rel: 'icon', type: 'image/svg+xml' }],
     ['meta', { name: 'theme-color', content: '#183b2a' }],
     ['meta', { property: 'og:title', content: 'Okay' }],
     ['meta', { property: 'og:description', content: '类型安全、可组合、可验证的工具方法集合。' }],
@@ -74,7 +76,7 @@ export default defineConfig({
       },
       {
         collapsed: false,
-        text: '@zhouchengfeng/okay-core',
+        text: 'okay-core',
         items: [
           { text: '字符串', link: '/core/string' },
           { text: '数字', link: '/core/number' },

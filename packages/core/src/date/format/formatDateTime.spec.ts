@@ -67,7 +67,7 @@ describe('formatDateTime', () => {
       { input: new Date(2023, 0, 1), expected: '2023-01-01 00:00:00' },
       { input: '2023-01-01', expected: '2023-01-01 00:00:00' },
       { input: '2023-01-01 00:00:00', expected: '2023-01-01 00:00:00' },
-      { input: 1672502400000, expected: '2023-01-01 00:00:00' },
+      { input: new Date(2023, 0, 1).getTime(), expected: '2023-01-01 00:00:00' },
       { input: dayjs('2023-01-01'), expected: '2023-01-01 00:00:00' },
     ]
 

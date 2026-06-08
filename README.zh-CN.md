@@ -2,6 +2,8 @@
 
 [English](./README.md) | 简体中文
 
+[在线文档](https://yibird.github.io/okay/)
+
 `okay` 是一个基于 pnpm workspace 的 TypeScript 工具库 monorepo，当前包含三个包：
 
 - `@zhouchengfeng/okay-core`：与框架无关的类型判断、异步控制、数字、文件、日期、数组和树工具。
@@ -86,7 +88,7 @@ import { composeRefs } from '@zhouchengfeng/okay-react'
 
 | API                                                                | 说明                             |
 | ------------------------------------------------------------------ | -------------------------------- |
-| `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `toTree` | 数组工具。                       |
+| `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `listToTree` | 数组工具。                       |
 | `forEachTree`                                                      | 树遍历工具，支持前序和后序模式。 |
 | `findNode`, `findParent`, `findPath`                               | 树查询工具。                     |
 | `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                 | 树结构信息工具。                 |

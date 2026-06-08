@@ -15,7 +15,7 @@ import {
   type MaskNameOptions,
   type MaskOptions,
   type MaskValue,
-} from '@zhouchengfeng/okay-core'
+} from '@zhouchengfeng/okay-core/string'
 ```
 
 ## 类型

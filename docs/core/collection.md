@@ -18,7 +18,7 @@ import {
   lastLeafPath,
   leaves,
   mapTree,
-  toTree,
+  listToTree,
   treeToList,
   treeToSet,
   type ArrayDiffResult,
@@ -28,9 +28,11 @@ import {
   type FastIndexedMapOptions,
   type FastStableSortOptions,
   type ForEachTreeOptions,
+  type ListToTreeOptions,
+  type TreeConfig,
   type TreeDiffResult,
   type TreeVisitOrder,
-} from '@zhouchengfeng/okay-core'
+} from '@zhouchengfeng/okay-core/coll'
 ```
 
 ## 数组 API
@@ -41,7 +43,7 @@ import {
 | `diffArray`      | `<T, Id extends PropertyKey = PropertyKey>(oldArray: readonly T[], newArray: readonly T[], options?: DiffArrayOptions<T, Id>) => ArrayDiffResult<T, Id>` | 比较两个实体数组的新增、删除、内容变化和位置变化。 |
 | `fastIndexedMap` | `<T, Id, Group>(array: readonly T[], keyOrConfig: keyof T \| FastIndexedMapOptions<T, Id, Group>) => FastIndexedMap<T, Id, Group>`                       | 高频按 id 查找、更新、删除，并可维护分组索引。     |
 | `fastStableSort` | `<T>(array: readonly T[], selectorOrCompare: ((item: T, index?: number) => number) \| ((a: T, b: T) => number), options?: FastStableSortOptions) => T[]` | 稳定排序；低基数数字 key 会自动走计数排序快路径。  |
-| `toTree`         | `<T extends Record<string, any>>(array: T[], config?: ToTreeConfig<T>) => T[]`                                                                           | 将带父级标识的扁平数组转换为树。                   |
+| `listToTree`     | `<T extends Record<PropertyKey, unknown>>(array: T[], config?: ListToTreeOptions<T>) => T[]`                                                            | 将带父级标识的扁平数组转换为树。                   |
 
 ## keyBy
 
@@ -187,9 +189,11 @@ byTitle.map((task) => task.title)
 // ['fix build', 'review types', 'write docs']
 ```
 
-## toTree
+## listToTree
 
-`toTree` 会浅拷贝每个节点，并在 `childrenKey` 下创建子节点数组。找不到父节点的项目会被提升为根节点，避免数据丢失。
+`listToTree` 会浅拷贝每个节点，并在 `childrenKey` 下创建子节点数组。找不到父节点的项目会被提升为根节点，避免数据丢失。
+
+`config` 支持 `idKey`、`parentIdKey`、`childrenKey` 和 `rootParentValue`。这些字段只用于控制建树规则，不会修改源数组节点。
 
 ```ts
 const list = [
@@ -198,7 +202,7 @@ const list = [
   { id: 3, parentId: 1, title: 'profile' },
 ]
 
-const tree = toTree(list, {
+const tree = listToTree(list, {
   idKey: 'id',
   parentIdKey: 'parentId',
   childrenKey: 'children',

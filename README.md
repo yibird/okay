@@ -2,6 +2,8 @@
 
 English | [简体中文](./README.zh-CN.md)
 
+[Documentation](https://yibird.github.io/okay/)
+
 `okay` is a pnpm monorepo for small, typed utilities. It publishes three packages:
 
 - `@zhouchengfeng/okay-core`: framework-agnostic utilities for type checks, async control, numbers, files, dates, arrays, and trees.
@@ -86,7 +88,7 @@ Collections:
 
 | API                                                                | Description                                                |
 | ------------------------------------------------------------------ | ---------------------------------------------------------- |
-| `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `toTree` | Array helpers.                                             |
+| `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `listToTree` | Array helpers.                                             |
 | `forEachTree`                                                      | Tree traversal helper with pre-order and post-order modes. |
 | `findNode`, `findParent`, `findPath`                               | Tree lookup helpers.                                       |
 | `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                 | Tree shape helpers.                                        |

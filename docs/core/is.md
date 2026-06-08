@@ -34,13 +34,13 @@ import {
   isWeakSet,
   isWindow,
   rawType,
-} from '@zhouchengfeng/okay-core'
+} from '@zhouchengfeng/okay-core/is'
 ```
 
 ## API 总览
 
-| 方法             | 类型签名                                                                        | 示例                                |
-| ---------------- | ------------------------------------------------------------------------------- | ----------------------------------- | ---------------------- |
+| 方法             | 类型签名                                                                            | 示例                                |
+| ---------------- | ----------------------------------------------------------------------------------- | ----------------------------------- |
 | `rawType`        | `(target: unknown) => string`                                                   | `rawType(new Map()) // 'Map'`       |
 | `isArray`        | `<T = any>(target: unknown) => target is T[]`                                   | `isArray<number>(value)`            |
 | `isString`       | `(target: unknown) => target is string`                                         | `if (isString(value)) value.trim()` |
@@ -61,8 +61,8 @@ import {
 | `isUndefined`    | `(target?: unknown) => target is undefined`                                     | `isUndefined(value)`                |
 | `isNull`         | `(target: unknown) => target is null`                                           | `isNull(null) // true`              |
 | `isNotNull`      | `<T>(target: T) => target is Exclude<T, null>`                                  | `[1, null].filter(isNotNull)`       |
-| `isNil`          | `(target: unknown) => target is null                                            | undefined`                          | `isNil(value)`         |
-| `isNullOrUndef`  | `(target: unknown) => target is null                                            | undefined`                          | `isNullOrUndef(value)` |
+| `isNil`          | `(target: unknown) => target is null \| undefined`                                  | `isNil(value)`                      |
+| `isNullOrUndef`  | `(target: unknown) => target is null \| undefined`                                  | `isNullOrUndef(value)`              |
 | `isNullAndUndef` | `(_target: unknown) => _target is never`                                        | `isNullAndUndef(value) // false`    |
 | `isNaN`          | `(value: unknown) => value is number`                                           | `isNaN(Number.NaN)`                 |
 | `isFinite`       | `(target: unknown) => target is number`                                         | `isFinite(1)`                       |
