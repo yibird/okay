@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Okay logo">
+  <rect width="96" height="96" rx="24" fill="#13251c"/>
+  <path d="M25 50.5 41.2 66 72 30" fill="none" stroke="#74d99d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="70" cy="68" r="7" fill="#d6a247"/>
+</svg>

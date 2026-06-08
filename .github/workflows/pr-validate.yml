@@ -31,6 +31,9 @@ jobs:
       - name: Build packages
         run: pnpm run build
 
+      - name: Build docs
+        run: pnpm run docs:build
+
       - name: Lint code
         run: pnpm run lint
 
@@ -38,7 +41,10 @@ jobs:
         run: pnpm run typecheck
 
       - name: Run tests
-        run: pnpm run test
+        run: pnpm run test:unit
+
+      - name: Check npm package contents
+        run: pnpm run pack:check
 
       - name: Check formatting
-        run: pnpm run format -- --check
+        run: pnpm run format:check

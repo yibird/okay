@@ -1,2 +1,3 @@
-export { getCurrentDay } from './get-current-day'
-export { getDayName } from './get-day-name'
+export { today } from './today'
+export { weekdayName } from './weekdayName'
+export { weekdayNameZh } from './weekdayNameZh'

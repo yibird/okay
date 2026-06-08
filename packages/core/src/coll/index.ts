@@ -1,3 +1,2 @@
-export * from './list'
-export * from './queue'
+export * from './array'
 export * from './tree'

@@ -42,9 +42,7 @@ describe('format', () => {
 
       expect(mockDayjs).toHaveBeenCalledWith(testDate)
       expect(mockDayjsInstance.isValid).toHaveBeenCalled()
-      expect(mockDayjsInstance.format).toHaveBeenCalledWith(
-        'YYYY-MM-DD HH:mm:ss',
-      )
+      expect(mockDayjsInstance.format).toHaveBeenCalledWith('YYYY-MM-DD HH:mm:ss')
       expect(result).toBe('2023-01-01 12:34:56')
     })
 
@@ -290,29 +288,17 @@ describe('format', () => {
 
     it('should handle complex templates', () => {
       mockDayjsInstance.format.mockReturnValue('2023-01-01 12:00:00.000')
-      const result = format(
-        new Date('2023-01-01T12:00:00'),
-        'YYYY-MM-DD HH:mm:ss.SSS',
-      )
+      const result = format(new Date('2023-01-01T12:00:00'), 'YYYY-MM-DD HH:mm:ss.SSS')
 
-      expect(mockDayjsInstance.format).toHaveBeenCalledWith(
-        'YYYY-MM-DD HH:mm:ss.SSS',
-      )
+      expect(mockDayjsInstance.format).toHaveBeenCalledWith('YYYY-MM-DD HH:mm:ss.SSS')
       expect(result).toBe('2023-01-01 12:00:00.000')
     })
 
     it('should handle template with text', () => {
-      mockDayjsInstance.format.mockReturnValue(
-        'Date: 2023-01-01 Time: 12:00:00',
-      )
-      const result = format(
-        new Date('2023-01-01T12:00:00'),
-        'Date: YYYY-MM-DD Time: HH:mm:ss',
-      )
+      mockDayjsInstance.format.mockReturnValue('Date: 2023-01-01 Time: 12:00:00')
+      const result = format(new Date('2023-01-01T12:00:00'), 'Date: YYYY-MM-DD Time: HH:mm:ss')
 
-      expect(mockDayjsInstance.format).toHaveBeenCalledWith(
-        'Date: YYYY-MM-DD Time: HH:mm:ss',
-      )
+      expect(mockDayjsInstance.format).toHaveBeenCalledWith('Date: YYYY-MM-DD Time: HH:mm:ss')
       expect(result).toBe('Date: 2023-01-01 Time: 12:00:00')
     })
   })
@@ -347,9 +333,7 @@ describe('format', () => {
         expect(result).toBe(testCase.expected)
 
         if (index === testCases.length - 1) {
-          expect(mockDayjsInstance.format).toHaveBeenCalledWith(
-            testCase.template,
-          )
+          expect(mockDayjsInstance.format).toHaveBeenCalledWith(testCase.template)
         }
       })
     })
@@ -357,16 +341,15 @@ describe('format', () => {
 
   // 10. 测试dayjs调用次数
   describe('dayjs integration', () => {
-    it('should call dayjs twice for valid dates', () => {
+    it('should call dayjs once for valid dates', () => {
       mockDayjsInstance.isValid.mockReturnValue(true)
       mockDayjsInstance.format.mockReturnValue('2023-01-01 12:34:56')
 
       const testDate = new Date('2023-01-01T12:34:56')
       format(testDate)
 
-      expect(mockDayjs).toHaveBeenCalledTimes(2)
-      expect(mockDayjs).toHaveBeenNthCalledWith(1, testDate)
-      expect(mockDayjs).toHaveBeenNthCalledWith(2, testDate)
+      expect(mockDayjs).toHaveBeenCalledTimes(1)
+      expect(mockDayjs).toHaveBeenCalledWith(testDate)
     })
 
     it('should call dayjs once for invalid dates', () => {

@@ -1,164 +1,156 @@
-# okay
-okay 是一个基于Typescript工具函数库,提供了一些常用的函数,okay包含如下模块:
-- @okay/core: 提供了一些常用的函数,包含is、日期、数据结构转换(list转tree等等)、异步等常用函数。
-- @okay/vue: 提供了一些vue相关的函数和组合式Api。
-- @okay/react: 提供了一些react相关的函数和hook。
+﻿# okay
 
+[English](./README.md) | 简体中文
+
+`okay` 是一个基于 pnpm workspace 的 TypeScript 工具库 monorepo，当前包含三个包：
+
+- `@okay/core`：与框架无关的类型判断、异步控制、数字、文件、日期、数组和树工具。
+- `@okay/vue`：Vue 3 composables 和 ref 工具。
+- `@okay/react`：React ref 工具。
 
 ## 安装
-- 安装core模块:
+
 ```bash
-npm install @okay/core
-```
-- 安装vue模块:
-```bash
-npm install @okay/vue
-```
-- 安装react模块:
-```bash
-npm install @okay/react
+pnpm add @okay/core
+pnpm add @okay/vue
+pnpm add @okay/react
 ```
 
+按需导入：
 
-## @okay/core
-@okay/core 提供了一些常用的函数,包含is、日期、数据结构转换(list转tree等等)、异步等常用函数。
+```ts
+import { asyncTo, deferred, formatCurrency, formatBytes, leaves, isEmpty } from '@okay/core'
+import { useDebouncedRef } from '@okay/vue'
+import { composeRefs } from '@okay/react'
+```
 
-### is相关函数
-- `rawType(target: unknown)`: 获取目标元素原始类型。库中的大多数is函数都是基于rawType。
-- `isObject(target: unknown)`: 判断目标元素是否为对象。
-- `isArray(target: unknown)`: 判断目标元素是否为数组。
-- `isString(target: unknown)`: 判断目标元素是否为字符串。
-- `isNumber(target: unknown)`: 判断目标元素是否为数字。
-- `isBool(target: unknown)`: 判断目标元素是否为布尔值。
-- `isFunction(target: unknown)`: 判断目标元素是否为函数。
-- `isPromise(target: unknown)`: 判断目标元素是否为Promise。
-- `isSymbol(target: unknown)`: 判断目标元素是否为Symbol。
-- `isBigint(target: unknown)`: 判断目标元素是否为Bigint。
-- `isObject(target: unknown)`: 判断目标元素是否为对象。
-- `isArray(target: unknown)`: 判断目标元素是否为数组。
-- `isDate(target: unknown)`: 判断目标元素是否为日期。
-- `isRegExp(target: unknown)`: 判断目标元素是否为正则表达式。
-- `isMap(target: unknown)`: 判断目标元素是否为Map。
-- `isSet(target: unknown)`: 判断目标元素是否为Set。
-- `isWeakMap(target: unknown)`: 判断目标元素是否为WeakMap。
-- `isWeakSet(target: unknown)`: 判断目标元素是否为WeakSet。
-- `isNaN(target: unknown)`: 判断目标元素是否为NaN。
-- `isFinite(target: unknown)`: 判断目标元素是否为有限数。
-- `isNaNOrFinite(target: unknown)`: 判断目标元素是否为NaN或有限数。
-- `isNull(target: unknown)`: 判断目标元素是否为null。
-- `isNotNull(target: unknown)`: 判断目标元素是否不为null。
-- `isEmpty(target: unknown)`: 判断目标元素是否为空。
-- `isDef(target: unknown)`:判断目标元素是否定义(不为undefined)。
-- `isUnDef(target: unknown)`:判断目标元素是否未定义(为undefined)。
-- `isNil(target: unknown)`: 判断目标元素是否为null且undefined,函数内容跟isNullAndUndef相同。
-- `isNullAndUndef(target: unknown)`: 判断目标元素是否为null且undefined。
-- `isNotNullAndUndef(target: unknown)`: 判断目标元素是否不为null且不为undefined。
-- `isNullOrUndef(target: unknown)`: 判断目标元素是否为null或undefined。
-- `isWindow(target: unknown)`: 判断目标元素是否为window对象。
-- `isElement(target: unknown)`: 判断目标元素是否为DOM元素。
-- `isNaN(target: unknown)`: 判断目标元素是否为NaN。
-- `isFinite(target: unknown)`: 判断目标元素是否为有限数。
-- `isNaNOrFinite(target: unknown)`: 判断目标元素是否为NaN或有限数。
+## 模块
 
-### 异步相关函数
+### @okay/core
 
-- `asyncTo<T, E = Error>(promise: Promise<T>,callback?: () => void)`: Promise<[E, null] | [null, T]>: 异步函数转换为Promise<[E, null] | [null, T]>,Promise返回数组中第一项为错误信息,第二项为结果,异步函数执行成功时,返回[null, T],异步函数执行失败时,返回[E, null]。
-- `abortablePromise<T>(promise: Promise<T>)`:取消Promise的函数。返回一个可取消的Promise和取消函数。
-- `parallelTasks<T>(tasks: Array<() => Promise<T>>,concurrency: number): Promise<T[]>`:并行执行任务(tasks),并限制并发数(concurrency)。泛型T表示Promise的返回值类型。
-- `promiseWithTimeout<T>(promise: Promise<T>,timeoutMs: number,timeoutError: Error = new Error('Promise timeout')): Promise<T>`:为 Promise 添加超时控制。当 Promise 执行时间超过指定的超时时间（timeoutMs,单位毫秒）时,会抛出指定的超时错误(timeoutError)。
-- `retryPromise<T>(func: () => Promise<T>,maxRetryCount = 3,delay = 100,shouldRetry: (error: any) => boolean = () => true): Promise<T>`:重试Promise。当 Promise 执行失败时,会根据指定的重试次数(maxRetryCount)和重试间隔时间(delay)进行重试,直到 Promise 执行成功或重试次数用完。shouldRetry表示重试条件函数,默认所有错误都重试。
-- `singleFlight<T extends (...args: any[]) => Promise<any>>(func: T): T`:确保同一时间只有一个相同请求在执行,避免重复调用(竞态条件保护)。类似于go中的singleFlight。
-- `withAbortSignal<T>(promise: Promise<T>,signal?: AbortSignal): Promise<T>`:具有AbortSignal的可取消Promise。
+类型判断：
 
-### 集合相关函数
+| API                                                                                           | 说明                                            |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `rawType(value)`                                                                              | 返回 `Object.prototype.toString` 的原生类型名。 |
+| `isArray`, `isBool`, `isString`, `isNumber`, `isBigint`, `isSymbol`                           | 基础类型和数组判断。                            |
+| `isObject`, `isFunc`, `isPromise`, `isDate`, `isRegExp`                                       | 对象、函数、Promise 和内置对象判断。            |
+| `isMap`, `isSet`, `isWeakMap`, `isWeakSet`                                                    | 集合类型判断。                                  |
+| `isDefined`, `isUndefined`, `isNull`, `isNotNull`, `isNil`, `isNullAndUndef`, `isNullOrUndef` | 空值和 undefined 判断。                         |
+| `isNaN`, `isFinite`, `isNaNOrFinite`, `isEmpty`, `isBrowser`, `isWindow`, `isElement`         | 常用运行时判断。                                |
 
-目前集合函数包含list、tree、queue等基础函数。
+异步工具：
 
-#### list函数
-- `arrayToObject<T>(arr: T[],keyMapper: (item: T) => string | number | symbol,valMapper: (item: T) => any)`:将数组转换为对象,keyMapper函数用于映射数组元素为对象的key,valMapper函数用于映射数组元素为对象的value。
-- `average(arr: number[])`:计算数组平均值。
-- `averageBy<T>(arr: T[], func: (item: T) => number)`:计算数组平均值,func函数用于映射数组元素为数值。
-- `listToTree<T extends TreeNode>(list: T[],config: TreeConfig<T> = {})`:将数组转换为树结构。
+| API                                               | 说明                                                            |
+| ------------------------------------------------- | --------------------------------------------------------------- |
+| `asyncTo(promise, callback?)`                     | 将 Promise 转成 `[error, null]` 或 `[null, value]`。            |
+| `abortable(promise)`                              | 返回 `{ promise, abort }`，取消操作幂等，并支持自定义取消原因。 |
+| `deferred()`                                      | 创建一个暴露 `resolve` 和 `reject` 的 Promise。                 |
+| `parallel(tasks, concurrency)`                    | 按并发上限执行异步任务，并保持结果顺序。                        |
+| `settleObject(object)`                            | 以对象形态执行 Promise，并保留 key 和 `PromiseSettledResult`。  |
+| `raceObject(object)`                              | 以对象形态竞速 Promise，并返回胜出的 key 和 resolved value。    |
+| `withTimeout(promise, timeoutMs, timeoutError?)`  | Promise 超时后 reject。                                         |
+| `retry(fn, maxRetryCount?, delay?, shouldRetry?)` | 非递归重试失败的异步函数。                                      |
+| `singleFlight(fn)`                                | 多次并发调用共享同一个进行中的 Promise。                        |
+| `withSignal(promise, signal?)`                    | 监听 `AbortSignal`，完成后自动移除监听器。                      |
 
-- `sumBy<T>(arr: T[], func: (item: T) => number)`:计算数组总和,func函数用于映射数组元素为数值。
-- `maxBy<T>(arr: T[], func: (item: T) => number)`:计算数组最大值,func函数用于映射数组元素为数值。
-- `minBy<T>(arr: T[], func: (item: T) => number)`:计算数组最小值,func函数用于映射数组元素为数值。
-- `countBy<T>(arr: T[], func: (item: T) => number)`:计算数组元素出现次数,func函数用于映射数组元素为数值。
-- `groupBy<T>(arr: T[], func: (item: T) => number)`:将数组元素分组,func函数用于映射数组元素为数值。
-- `partitionBy<T>(arr: T[], func: (item: T) => number)`:将数组元素分区,func函数用于映射数组元素为数值。
- 
-#### tree相关函数
-- `eachPostOrder<T extends Record<string, any>>(tree: T[],visitor: (node: T, level: number, parent: T | null) => void,childrenKey = 'children')`:后序遍历树结构,visitor函数用于处理每个节点,childrenKey表示子节点键名,默认值为'children'。
-- `eachPreOrder<T extends Record<string, any>>(tree: T[],visitor: (node: T, level: number, parent: T | null) => void,childrenKey = 'children')`:前序遍历树结构,visitor函数用于处理每个节点,childrenKey表示子节点键名,默认值为'children'。
-- `findNodeById<T extends Record<string, any>>(tree: T[],targetId: string | number,config: TreeConfig<T> = {}): T | null`:根据节点ID查找树结构中的节点(如果找不到就返回null),config参数用于配置查找行为,默认值为空对象。
-- `findParentNode<T extends Record<string, any>>(tree: T[],targetId: string | number,config: TreeConfig<T> = {}): T | null`:根据节点ID查找树结构中的父节点(如果找不到就返回null),config参数用于配置查找行为,默认值为空对象。
-- `getDepth<T extends Record<string, any>>(tree: T[],childrenKey = 'children')`:获取树的深度,childrenKey表示子节点键名,默认值为'children'。
-- `getHeight<T extends Record<string, any>>(tree: T[],childrenKey = 'children')`:获取树的高度,childrenKey表示子节点键名,默认值为'children'。
-- `getFirstBranch<T extends Record<string, any>>(tree: T[],childrenKey: string = 'children'): T[]`:获取树的第一分支,childrenKey表示子节点键名,默认值为'children'。
-- `getLastBranch<T extends Record<string, any>>(tree: T[],childrenKey: string = 'children'): T[]`:获取树的最后分支,childrenKey表示子节点键名,默认值为'children'。
-- `getLeafNodes<T extends Record<string, any>>(tree: T[],childrenKey: string = 'children'): T[]`:获取树的叶子节点,childrenKey表示子节点键名,默认值为'children'。
-- `getParentNodes<T extends Record<string, any>>(tree: T[],targetId: string | number,config: TreeConfig<T> = {})`:获取树的父节点,childrenKey表示子节点键名,默认值为'children'。
-- `treeMap<T extends Record<string, any>,U extends Record<string, any>,K extends keyof T = 'children',>(tree: T[],mapperFunc: (item: T) => U |null,config: TreeMapConfig<T, K> = {},): U[]`:
-  对树结构进行映射转换,返回转换后的树结构。
-  - tree: 源树数组
-  - mapperFunc: 映射函数,接收 T,返回 U 或 null（null 表示过滤当前节点）
-  - config: 可选,childrenKey 指定子节点字段名（默认为 'children'）
-  - 返回值: 转换映射后的树结构
-- `treeToList<T extends Record<string, any>>(tree: T[],childrenKey: string = 'children'): T[]`:tree结构根据children属性扁平化为list,泛型T为节点类型。
-- `treeToSet<T extends Record<string, any>>(tree: T[],childrenKey = 'children'): Set<T>`:将树结构转换为Set集合,泛型T为节点类型。
+数字工具：
 
-#### queue相关函数
-- AsyncQueue:简单异步队列实现。
+| API                                    | 说明                                                      |
+| -------------------------------------- | --------------------------------------------------------- |
+| `formatNumber(value, options?)`        | 使用缓存的 `Intl.NumberFormat` 格式化普通数字。           |
+| `formatPercent(value, options?)`       | 将 ratio 或已经是百分比的数值格式化为本地化百分比。       |
+| `formatCurrency(value, options?)`      | 格式化货币，支持 options 对象和 currency 字符串快捷参数。 |
+| `formatCompactNumber(value, options?)` | 格式化紧凑数字，例如 `1.2K` 或本地化长文本。              |
+| `createNumberFormatter(options?)`      | 创建可复用 formatter，适合表格、循环等高频格式化场景。    |
 
-## 日期相关函数
+文件工具：
 
-### 格式化相关函数
-- `format(input?: dayjs.ConfigType,format?: string)`:格式化日期,input 为日期对象或日期字符串,format 为格式化字符串,默认值为'YYYY-MM-DD'。
-- `formatDate(input?: dayjs.ConfigType)`:格式化日期,input 为日期对象或日期字符串。
-- `formatTime(input?: dayjs.ConfigType)`:格式化时间,input 为日期对象或日期字符串。
-- `formatDateTime(input?: dayjs.ConfigType)`:格式化日期时间,input 为日期对象或日期字符串。
-- `formatRange(inputs?: dayjs.ConfigType | [dayjs.ConfigType, dayjs.ConfigType] | { start: dayjs.ConfigType; end: dayjs.ConfigType },format?: string)`:格式化日期范围(返回一个包含startDate和endDate的对象),inputs 为日期对象或日期字符串,format 为格式化字符串,默认值为`YYYY-MM-DD HH:mm:ss`。
-- `formatRangeWithDateTime(inputs?: dayjs.ConfigType | [dayjs.ConfigType, dayjs.ConfigType] | { start: dayjs.ConfigType; end: dayjs.ConfigType })`:格式化日期时间范围(返回一个包含startDate和endDate的对象),inputs 为日期对象或日期字符串(格式为`YYYY-MM-DD HH:mm:ss`)。
-- `formatRangeWithDate(inputs?: dayjs.ConfigType | [dayjs.ConfigType, dayjs.ConfigType] | { start: dayjs.ConfigType; end: dayjs.ConfigType })`:格式化日期范围(返回一个包含startDate和endDate的对象),inputs 为日期对象或日期字符串(格式为`YYYY-MM-DD`)。
-- `formatRangeWithTime(inputs?: dayjs.ConfigType | [dayjs.ConfigType, dayjs.ConfigType] | { start: dayjs.ConfigType; end: dayjs.ConfigType },format?: string)`:格式化时间范围(返回一个包含startDate和endDate的对象),inputs 为日期对象或日期字符串(格式为`HH:mm:ss`)。
+| API                                  | 说明                                                      |
+| ------------------------------------ | --------------------------------------------------------- |
+| `fileExt(fileName, withDot?)`        | 获取小写文件扩展名，并忽略路径、查询参数和 hash。         |
+| `fileParts(fileName)`                | 将文件路径或文件名拆成 `baseName`、`name`、`extension`。  |
+| `formatBytes(bytes, options?)`       | 使用二进制或十进制单位格式化文件大小。                    |
+| `fileInfo(file, options?)`           | 格式化类文件对象的名称、扩展名、MIME 类型和大小文案。     |
+| `readText`, `readBuffer`, `readJson` | 使用现代 API 读取 `Blob`，并兼容 `FileReader` 兜底。      |
+| `blobBase64(blob)`, `dataUrl(blob)`  | 不依赖 Node-only API，将 `Blob` 转为 base64 或 Data URL。 |
+| `blobText(blob)`                     | 读取 Blob 文本。                                          |
 
+集合工具：
 
-### day相关函数
-- `getCurrentDay()`:获取当前日期,返回当前日期的 Dayjs 对象。
-- `getDayName(day?: dayjs.ConfigType)`:获取星期几的名称,day 为 0 表示星期日,1 表示星期一,以此类推。
-- `getDayZhName(day?: dayjs.ConfigType)`:获取星期几的中文名称,day 为 0 表示星期日,1 表示星期一,以此类推。
+| API                                                                | 说明                             |
+| ------------------------------------------------------------------ | -------------------------------- |
+| `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `toTree` | 数组工具。                       |
+| `forEachTree`                                                      | 树遍历工具，支持前序和后序模式。 |
+| `findNode`, `findParent`, `findPath`                               | 树查询工具。                     |
+| `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                 | 树结构信息工具。                 |
+| `mapTree`, `treeToList`, `treeToSet`                               | 树转换工具。                     |
 
-### week相关函数
-- `getFirstDayOfWeek(date?: dayjs.ConfigType,options: { weekStartDay?: number } = {}): Dayjs`:获取当前周的第一天。
-- `getLastDayOfWeek(date?: dayjs.ConfigType,options: { weekStartDay?: number } = {}): Dayjs`:获取当前周的最后一天。
-- `getCurrentWeekRange(date?: date?: dayjs.ConfigType,options: { weekStartDay?: 0 | 1 } = {}): { firstDay: Dayjs; lastDay: Dayjs }`:获取当前星期范围。
-- `getDayIndexInWeek(date?: dayjs.ConfigType)`:获取指定日期是本周第几天。
-- `getDayOfWeek(date?: dayjs.ConfigType,locale: 'en' | 'zh' = 'zh',style: 'full' | 'short' = 'full')`:获取指定日期的星期。
-- `getNextWeek(date?: dayjs.ConfigType,options: { weekStartDay?: 0 | 1 } = {}): [Dayjs, Dayjs]`:获取下一周的日期范围。
-- `getPrevWeek(date?: dayjs.ConfigType,options: { weekStartDay?: 0 | 1 } = {}): [Dayjs, Dayjs]`:获取上一周的日期范围。
-- `getWeekDays(date?: dayjs.ConfigType)`:获取指定日期所在周的所有日期(周一到周日)。
-- `getWeekOfYear(date?: dayjs.ConfigType)`:获取日期所在年份的周数。
-- `getWeek(input?: dayjs.ConfigType)`:返回 ISO 周序号（1..53）。、
-- `getWeekdaysInWeek(date?: dayjs.ConfigType,options: { weekStartDay?: 0 | 1; weekdays?: number[] } = {})`:获取一周中的工作日。
-- `isDateInWeek(dateToCheck: dayjs.ConfigType,referenceDate?: dayjs.ConfigType)`:检查给定日期是否在指定日期的同一周内。
-- `isWeekend(date?: dayjs.ConfigType)`:检查日期是否为周末。
+日期工具：
 
+| API                                                              | 说明                                                        |
+| ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| `format`, `formatDate`, `formatDateTime`, `formatTime`           | 使用 Day.js 模板格式化日期、日期时间和时间。                |
+| `formatRange`, `dateRange`, `dateTimeRange`, `timeRange`         | 格式化单个日期或日期范围。                                  |
+| `relativeTime(date, options?)`                                   | 使用缓存的 `Intl.RelativeTimeFormat` 格式化本地化相对时间。 |
+| `isSameDay(dateA, dateB?)`                                       | 判断两个有效日期是否是同一个自然日。                        |
+| `isBusinessDay(date, options?)`                                  | 按可配置周末和节假日判断是否工作日。                        |
+| `businessDays(start, end, options?)`                             | 计算日期区间内的工作日天数，避免逐日遍历。                  |
+| `isoWeek`, `weekOfYear`, `weeksOfMonth`, `quarter`, `isLeapYear` | 周、月、季度和年份相关工具。                                |
 
-### month相关函数
-- `getAllDaysInMonth(year: number, month: number)`:获取指定月份的所有日期。
-- `getCurrentMonth()`:获取当前月份。
-- `getDaysInMonth(year: number, month: number)`:获取指定月份的天数。
-- `getFirstDayOfMonth(year: number, month: number)`:获取指定月份的第一天。
-- `getLastDayOfMonth(year: number, month: number)`:获取指定月份的最后一天。
-- `getMonthDiff(date1: dayjs.Dayjs, date2: dayjs.Dayjs)`:获取两个日期之间的月份差。
-- `getMonthName(month: number, locale = 'en')`:获取月份名称。
-- `getWeekdaysInMonth(year: number, month: number)`:获取某月的所有工作日(周一至周五)。
-- `getWeeksInMonth(year: number, month: number, startOfWeek = 0)`:获取月份的周数。
-- `isDateInMonth(date: dayjs.ConfigType, month: number)`:检查日期是否在指定的月份内。
+### @okay/vue
 
-### quarter相关函数
-- `getCurrentQuarter()`:获取当前季度,返回一个包含起始季度的数组。
-...
+| API                                       | 说明                                                          |
+| ----------------------------------------- | ------------------------------------------------------------- |
+| `useDebouncedValue(source, delay?)`       | 返回一个延迟跟随 source ref 的 ref。                          |
+| `useDebouncedRef(initialValue, options?)` | 创建可写的防抖 ref。                                          |
+| `useThrottledRef(initialValue, options?)` | 创建可写的节流 ref，支持 `leading` 和 `trailing`。            |
+| `useSyncedRef(source)`                    | 将 source ref 同步到一个新的 ref。                            |
+| `useValidatedRef(initial, validator)`     | 返回 `{ value, error }`，用于简单校验状态。                   |
+| `useStorageRef` / `useCachedRef`          | 将 ref 持久化到 `StorageLike`，并提供 `sync()` / `remove()`。 |
 
-### year相关函数
-...
+### @okay/react
+
+| API                        | 说明                                               |
+| -------------------------- | -------------------------------------------------- |
+| `setRef(ref, value)`       | 写入对象 ref 或 callback ref。                     |
+| `composeRefs(...refs)`     | 将多个 ref 合并成一个 callback ref。               |
+| `isRef(value)`             | 判断一个值是否是 React ref object。                |
+| `getRefValue(value)`       | 如果传入 ref，则返回 `ref.current`，否则返回原值。 |
+| `withForwardedRef(render)` | `React.forwardRef` 的轻量封装。                    |
+
+## 开发
+
+仓库使用 pnpm workspaces，并只保留一个锁文件：`pnpm-lock.yaml`。
+
+```bash
+pnpm install
+pnpm build
+pnpm typecheck
+pnpm lint
+pnpm format
+pnpm format:check
+pnpm test:unit
+pnpm test:bench
+```
+
+工程化工具：
+
+- 代码检查：`oxlint`
+- 代码格式化：`oxfmt`
+- 构建：`tsdown`
+- 单元测试：`vitest`
+- 性能测试：`mitata`
+- 发布：`changesets`
+
+## 性能测试
+
+性能测试使用 `mitata`，集中维护在 `scripts/bench.ts`。目前覆盖异步工具、日期工具、数字工具、文件工具、类型判断和树工具。运行方式：
+
+```bash
+pnpm test:bench
+```
+
+## 许可证
+
+[MIT](./LICENSE)

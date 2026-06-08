@@ -1,39 +1,57 @@
 {
-  "name": "okay-core",
+  "name": "@okay/core",
   "version": "0.0.12",
   "description": "a utility function library",
   "keywords": [
-    "utils",
-    "util",
-    "okay",
     "function",
     "function utils",
+    "javascript utils",
+    "okay",
     "typescript utils",
-    "javascript utils"
+    "util",
+    "utils"
   ],
-  "license": "MIT",
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
   },
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
-  "author": "zchengfeng <2684837849@qq.com>",
   "funding": "https://github.com/sponsors/yibird",
-  "main": "./dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
-  "scripts": {
-    "build": "tsdown --format esm --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./date": {
+      "types": "./dist/date.d.mts",
+      "import": "./dist/date.mjs",
+      "default": "./dist/date.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown --filter @okay/core",
+    "dev": "tsdown --filter @okay/core --watch",
+    "test": "vitest --run src"
   },
   "dependencies": {
-    "dayjs": "^1.11.13"
+    "dayjs": "^1.11.21"
   },
   "engines": {
     "node": ">=18.0.0"

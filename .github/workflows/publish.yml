@@ -2,7 +2,8 @@ name: Publish
 
 permissions:
   contents: write
-  packages: write
+  id-token: write
+  pull-requests: write
 
 on:
   push:
@@ -37,28 +38,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm run build
+      - name: Verify packages
+        run: pnpm run verify
 
-      - name: Create version bump and changelog
+      - name: Create version PR or publish to npm
+        id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm changeset version
-          commit: "chore: version packages"
-          title: "chore: version packages"
+          publish: pnpm run release
+          commit: 'chore: version packages'
+          title: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        run: pnpm publish -r
-        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        if: ${{ steps.changesets.outputs.hasChangesets }}
-        with:
-          generate_release_notes: true
-          tag_name: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

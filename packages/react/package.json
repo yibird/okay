@@ -1,51 +1,55 @@
 {
-  "name": "okay-react",
+  "name": "@okay/react",
   "version": "0.0.1",
   "description": "a utility React tool library and hooks library",
   "keywords": [
-    "react",
     "hooks",
-    "tool",
     "library",
-    "utility",
+    "okay react",
+    "react",
     "react-hooks",
-    "okay react"
+    "tool",
+    "utility"
   ],
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
   },
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
   "funding": "https://github.com/sponsors/yibird",
-  "license": "MIT",
-  "author": "zchengfeng <2684837849@qq.com>",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.mjs"
-    }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
-  "scripts": {
-    "build": "tsdown --format esm --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "react": "^19.1.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.1.10",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.0",
-    "eslint-plugin-react-perf": "^3.3.3"
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown --filter @okay/react",
+    "dev": "tsdown --filter @okay/react --watch",
+    "test": "vitest --run src"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.16",
+    "react": "^19.2.7"
+  },
+  "peerDependencies": {
+    "react": "^19.2.7"
   }
 }

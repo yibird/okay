@@ -1,1 +1,1 @@
-export { useDebounce } from './use-debounce'
+export { useDebouncedValue } from './useDebouncedValue'

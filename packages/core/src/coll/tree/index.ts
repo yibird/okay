@@ -1,13 +1,23 @@
-export { eachPostOrder } from './each-post-order'
-export { eachPreOrder } from './each-pre-order'
-export { findNodeById } from './find-node-by-id'
-export { findParentNode } from './find-parent-node'
-export { getDepth } from './get-depth'
-export { getFirstBranch } from './get-first-branch'
-export { getLastBranch } from './get-last-branch'
-export { getLeafNodes } from './get-leaf-nodes'
-export { getParentNodes } from './get-parent-nodes'
-export { treeMap } from './tree-map'
-export { treeToList } from './tree-to-list'
-export { treeToSet } from './tree-to-set'
+export { forEachTree } from './forEachTree'
+export { findNode } from './findNode'
+export { findParent } from './findParent'
+export { depth } from './depth'
+export { firstLeafPath } from './firstLeafPath'
+export { lastLeafPath } from './lastLeafPath'
+export { leaves } from './leaves'
+export { findPath } from './findPath'
+export { mapTree } from './mapTree'
+export { treeToList } from './treeToList'
+export { treeToSet } from './treeToSet'
+export { diffTree } from './diffTree'
 export type { TreeConfig } from './types'
+export type { ForEachTreeOptions, TreeVisitOrder } from './forEachTree'
+export type {
+  DiffTreeOptions,
+  TreeDiffAdded,
+  TreeDiffId,
+  TreeDiffRemoved,
+  TreeDiffResult,
+  TreeDiffSelector,
+  TreeDiffUpdated,
+} from './diffTree'

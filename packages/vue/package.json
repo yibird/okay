@@ -1,49 +1,55 @@
 {
-  "name": "okay-vue",
+  "name": "@okay/vue",
   "version": "0.0.1",
   "description": "a utility Vue tool library and composables library",
   "keywords": [
-    "vue",
     "composables",
-    "tool",
     "library",
+    "okay/vue",
+    "tool",
     "utility",
-    "vue3",
+    "vue",
     "vue-composables",
-    "okay/vue"
+    "vue3"
   ],
-  "license": "MIT",
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
   },
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
-  "author": "zchengfeng <2684837849@qq.com>",
   "funding": "https://github.com/sponsors/yibird",
-  "main": "./dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.mjs"
-    }
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsdown --format esm --minify"
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
-  "dependencies": {
-    "vue": "^3.5.18"
+  "scripts": {
+    "build": "tsdown --filter @okay/vue",
+    "dev": "tsdown --filter @okay/vue --watch",
+    "test": "vitest --run src"
   },
   "devDependencies": {
-    "eslint-plugin-vue": "^10.5.1"
+    "vue": "^3.5.35"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.35"
   }
 }

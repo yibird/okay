@@ -1,68 +1,80 @@
 {
   "name": "okay",
   "version": "0.0.1",
-  "description": "A starter for creating a tsdown package.",
+  "private": true,
+  "description": "A monorepo utility library for TypeScript, Vue, and React.",
   "homepage": "https://github.com/yibird/okay#readme",
   "bugs": {
     "url": "https://github.com/yibird/okay/issues"
   },
+  "license": "MIT",
+  "author": "zchengfeng <2684837849@qq.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yibird/okay.git"
   },
   "funding": "https://github.com/sponsors/yibird",
-  "license": "MIT",
-  "author": "zchengfeng <2684837849@qq.com>",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
-    "format": "prettier --cache --write .",
+    "build": "pnpm -r --stream build",
+    "build:packages": "tsdown",
+    "dev": "pnpm -r --parallel dev",
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs --host 127.0.0.1 --port 8888",
+    "docs:preview": "vitepress preview docs",
+    "format": "oxfmt --write . --ignore-path .oxfmtignore",
+    "format:check": "oxfmt --check . --ignore-path .oxfmtignore",
     "lint": "oxlint",
     "lint:fix": "pnpm run lint --fix",
+    "pack:check": "pnpm --filter @okay/core --filter @okay/vue --filter @okay/react --stream exec npm pack --dry-run",
     "prepublishOnly": "pnpm run build",
-    "release": "pnpm --recursive --stream build && changeset publish",
-    "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "release:changeset": "changeset",
+    "release:version": "changeset version",
+    "release": "changeset publish",
+    "test": "pnpm run test:unit",
+    "test:bench": "tsx scripts/bench.ts",
+    "test:coverage": "vitest --run --coverage",
+    "test:unit": "vitest --run",
+    "typecheck": "tsc --noEmit",
+    "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test:unit && pnpm run build && pnpm run pack:check"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
+    "@commitlint/types": "^21.0.1",
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "^4.1.8",
+    "commitizen": "^4.3.1",
+    "conventional-changelog-atom": "^5.1.0",
+    "cz-git": "^1.13.1",
+    "dayjs": "^1.11.21",
+    "happy-dom": "^20.9.0",
+    "mitata": "^1.0.34",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
+    "tsdown": "^0.22.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vite": "8.0.16",
+    "vitepress": "^1.6.4",
+    "vitest": "^4.1.8",
+    "vue": "^3.5.35"
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-git"
     }
   },
-  "devDependencies": {
-    "@changesets/cli": "^2.29.5",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@commitlint/types": "^19.8.1",
-    "@types/node": "^24.8.1",
-    "commitizen": "^4.3.1",
-    "conventional-changelog-atom": "^5.0.0",
-    "conventional-changelog-cli": "^5.0.0",
-    "cz-git": "^1.12.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-promise": "^7.2.1",
-    "happy-dom": "^17.4.7",
-    "oxlint": "^1.23.0",
-    "prettier": "^3.6.2",
-    "prettier-plugin-packagejson": "^2.5.19",
-    "tsdown": "^0.15.7",
-    "tsx": "^4.20.6",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "publishConfig": {
-    "access": "public"
-  }
+  "packageManager": "pnpm@10.11.0"
 }
