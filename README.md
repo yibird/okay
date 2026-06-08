@@ -86,13 +86,13 @@ File utilities:
 
 Collections:
 
-| API                                                                | Description                                                |
-| ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| API                                                                    | Description                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------- |
 | `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `listToTree` | Array helpers.                                             |
-| `forEachTree`                                                      | Tree traversal helper with pre-order and post-order modes. |
-| `findNode`, `findParent`, `findPath`                               | Tree lookup helpers.                                       |
-| `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                 | Tree shape helpers.                                        |
-| `mapTree`, `treeToList`, `treeToSet`                               | Tree transformation helpers.                               |
+| `forEachTree`                                                          | Tree traversal helper with pre-order and post-order modes. |
+| `findNode`, `findParent`, `findPath`                                   | Tree lookup helpers.                                       |
+| `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                     | Tree shape helpers.                                        |
+| `mapTree`, `treeToList`, `treeToSet`                                   | Tree transformation helpers.                               |
 
 Date utilities:
 

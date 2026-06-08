@@ -43,7 +43,7 @@ import {
 | `diffArray`      | `<T, Id extends PropertyKey = PropertyKey>(oldArray: readonly T[], newArray: readonly T[], options?: DiffArrayOptions<T, Id>) => ArrayDiffResult<T, Id>` | 比较两个实体数组的新增、删除、内容变化和位置变化。 |
 | `fastIndexedMap` | `<T, Id, Group>(array: readonly T[], keyOrConfig: keyof T \| FastIndexedMapOptions<T, Id, Group>) => FastIndexedMap<T, Id, Group>`                       | 高频按 id 查找、更新、删除，并可维护分组索引。     |
 | `fastStableSort` | `<T>(array: readonly T[], selectorOrCompare: ((item: T, index?: number) => number) \| ((a: T, b: T) => number), options?: FastStableSortOptions) => T[]` | 稳定排序；低基数数字 key 会自动走计数排序快路径。  |
-| `listToTree`     | `<T extends Record<PropertyKey, unknown>>(array: T[], config?: ListToTreeOptions<T>) => T[]`                                                            | 将带父级标识的扁平数组转换为树。                   |
+| `listToTree`     | `<T extends Record<PropertyKey, unknown>>(array: T[], config?: ListToTreeOptions<T>) => T[]`                                                             | 将带父级标识的扁平数组转换为树。                   |
 
 ## keyBy
 

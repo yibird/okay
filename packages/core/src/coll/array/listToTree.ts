@@ -35,10 +35,7 @@ export interface ListToTreeOptions<T extends TreeNode = TreeNode> {
  * @param config 自定义标识、父级、子级和根节点标记字段。
  * @returns 从输入列表构建出的树根节点。
  */
-export function listToTree<T extends TreeNode>(
-  array: T[],
-  config: ListToTreeOptions<T> = {},
-): T[] {
+export function listToTree<T extends TreeNode>(array: T[], config: ListToTreeOptions<T> = {}): T[] {
   const {
     idKey = 'id' as keyof T,
     childrenKey = 'children' as keyof T,

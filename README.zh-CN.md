@@ -86,13 +86,13 @@ import { composeRefs } from '@zhouchengfeng/okay-react'
 
 集合工具：
 
-| API                                                                | 说明                             |
-| ------------------------------------------------------------------ | -------------------------------- |
+| API                                                                    | 说明                             |
+| ---------------------------------------------------------------------- | -------------------------------- |
 | `keyBy`, `diffArray`, `fastIndexedMap`, `fastStableSort`, `listToTree` | 数组工具。                       |
-| `forEachTree`                                                      | 树遍历工具，支持前序和后序模式。 |
-| `findNode`, `findParent`, `findPath`                               | 树查询工具。                     |
-| `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                 | 树结构信息工具。                 |
-| `mapTree`, `treeToList`, `treeToSet`                               | 树转换工具。                     |
+| `forEachTree`                                                          | 树遍历工具，支持前序和后序模式。 |
+| `findNode`, `findParent`, `findPath`                                   | 树查询工具。                     |
+| `depth`, `firstLeafPath`, `lastLeafPath`, `leaves`                     | 树结构信息工具。                 |
+| `mapTree`, `treeToList`, `treeToSet`                                   | 树转换工具。                     |
 
 日期工具：
 
