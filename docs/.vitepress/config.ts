@@ -21,7 +21,7 @@ export default defineConfig({
   },
   themeConfig: {
     editLink: {
-      pattern: `${repo}/edit/main/docs/:path`,
+      pattern: `${repo}/edit/master/docs/:path`,
       text: '在 GitHub 上编辑此页',
     },
     footer: {
