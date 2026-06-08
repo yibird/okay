@@ -1,6 +1,6 @@
 {
   "name": "@zhouchengfeng/okay-react",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "a utility React tool library and hooks library",
   "keywords": [
     "hooks",

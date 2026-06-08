@@ -1,6 +1,6 @@
 {
   "name": "@zhouchengfeng/okay-vue",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "a utility Vue tool library and composables library",
   "keywords": [
     "composables",
