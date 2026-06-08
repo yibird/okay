@@ -2,7 +2,7 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-[Documentation](https://yibird.github.io/okay/)
+<a href="https://yibird.github.io/okay/" target="_blank" rel="noopener noreferrer">Documentation</a>
 
 `okay` is a pnpm monorepo for small, typed utilities. It publishes three packages:
 

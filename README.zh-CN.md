@@ -2,7 +2,7 @@
 
 [English](./README.md) | 简体中文
 
-[在线文档](https://yibird.github.io/okay/)
+<a href="https://yibird.github.io/okay/" target="_blank" rel="noopener noreferrer">在线文档</a>
 
 `okay` 是一个基于 pnpm workspace 的 TypeScript 工具库 monorepo，当前包含三个包：
 
