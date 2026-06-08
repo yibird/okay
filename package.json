@@ -1,6 +1,6 @@
 {
   "name": "okay",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "private": true,
   "description": "A monorepo utility library for TypeScript, Vue, and React.",
   "homepage": "https://github.com/yibird/okay#readme",
