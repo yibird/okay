@@ -1,0 +1,61 @@
+import { defineConfig } from 'cz-git'
+
+const types = [
+  'feat',
+  'fix',
+  'docs',
+  'style',
+  'refactor',
+  'perf',
+  'test',
+  'build',
+  'ci',
+  'revert',
+  'chore',
+  'wip',
+]
+
+export default defineConfig({
+  extends: ['@commitlint/config-conventional'],
+  parserPreset: 'conventional-changelog-atom',
+  formatter: '@commitlint/format',
+  rules: {
+    'type-enum': [2, 'always', types],
+    'subject-case': [0],
+  },
+  prompt: {
+    messages: {
+      type: '选择提交类型:',
+      scope: '选择提交范围（可选）:',
+      customScope: '输入自定义提交范围:',
+      subject: '填写简短变更描述:\n',
+      body: '填写详细变更描述（可选，使用 "|" 换行）:\n',
+      breaking: '列出破坏性变更（可选，使用 "|" 换行）:\n',
+      footerPrefixesSelect: '选择关联 issue 前缀（可选）:',
+      customFooterPrefix: '输入自定义 issue 前缀:',
+      footer: '列出关联 issue（可选，例如 #31）:\n',
+      confirmCommit: '确认提交?',
+    },
+    types: [
+      { value: 'feat', name: 'feat: 新增功能' },
+      { value: 'fix', name: 'fix: 修复缺陷' },
+      { value: 'docs', name: 'docs: 文档变更' },
+      { value: 'style', name: 'style: 代码格式调整' },
+      { value: 'refactor', name: 'refactor: 代码重构' },
+      { value: 'perf', name: 'perf: 性能优化' },
+      { value: 'test', name: 'test: 测试相关' },
+      { value: 'build', name: 'build: 构建或依赖变更' },
+      { value: 'ci', name: 'ci: CI 配置变更' },
+      { value: 'revert', name: 'revert: 回退提交' },
+      { value: 'chore', name: 'chore: 其他变更' },
+      { value: 'wip', name: 'wip: 进行中的工作' },
+    ],
+    useEmoji: false,
+    scopes: ['core', 'vue', 'react', 'repo'],
+    allowCustomScopes: true,
+    allowEmptyScopes: true,
+    allowBreakingChanges: ['feat', 'fix'],
+    skipQuestions: ['breaking', 'footerPrefix', 'footer'],
+    issuePrefixes: [{ value: 'closed', name: 'closed: issue 已处理' }],
+  },
+})
