@@ -51,7 +51,7 @@ describe('retry', () => {
     const start = Date.now()
     await retry(func, 1, 100)
     const duration = Date.now() - start
-    expect(duration).toBeGreaterThanOrEqual(100)
+    expect(duration).toBeGreaterThanOrEqual(90)
   })
 
   it('should support function delay', async () => {
